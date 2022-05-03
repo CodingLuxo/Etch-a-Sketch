@@ -1,9 +1,8 @@
 #container{
     display:flex;
     border: 5px solid black;
-    margin: auto;
-    width: 960px;
-    height: 720px;
+    width: 480px;
+    height: 360px;
     flex-direction: column;
 }
 
@@ -21,5 +20,8 @@
     flex-grow: 1;
     flex-shrink: 1;
     border: 1px solid black;
+   
 }
+
+
 
