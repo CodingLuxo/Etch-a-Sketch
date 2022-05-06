@@ -1,23 +1,34 @@
 const container = document.querySelector("#container");
-let grids;
-let gridver;
+const button = document.createElement("button");
+const body = document.querySelector("body");
+const eraser = document.createElement("button");
+
+body.appendChild(button);
+body.appendChild(eraser);
+
 
     
 // Grid Creation
-    for(let i = 1; i<= 16; i++){
+
+function gridCreation(c){
+    if (c == undefined) c = 16;
+    for(let i = 1; i<= c; i++){
     
-    grids = document.createElement("div");
+    const grids = document.createElement("div");
     grids.setAttribute("data-number",`${i}`);
-            for(let j = 1; j<= 16; j++){
-                gridsver = document.createElement("div");
+            for(let j = 1; j<= c; j++){
+                const gridsver = document.createElement("div");
                 gridsver.setAttribute("data-ver",`${j}`);
                 grids.appendChild(gridsver);
             }
     container.appendChild(grids);
     }
+}
+
+gridCreation();
 
 // hover effect
-
+function hover(){
 const hovering = document.querySelectorAll("[data-ver]");
 
 hovering.forEach((valor) => {
@@ -26,17 +37,36 @@ hovering.forEach((valor) => {
 })
 });
 
-//Reset Button function
+//Eraser button function
 
-const button = document.createElement("button");
-const body = document.querySelector("body");
-
-body.appendChild(button);
-
-button.addEventListener("click",()=>{
+eraser.addEventListener("click",()=>{
     hovering.forEach(a =>{
         a.style.backgroundColor = "#FFFFFF";
     } )
+})
+
+}
+
+hover();
+
+//Reset Button function and generate a new grid
+
+
+button.addEventListener("click",()=>{
+    
+    let c = prompt("How many squares do you want?");
+    if (c < 100){
+        const divs = document.querySelectorAll("[data-number]");
+        divs.forEach(div => { //
+        div.remove();
+        })
+        gridCreation(c);
+        hover();
+    }
+
+    else alert("Please choose a number lower than 100");
+    
+
 })
 
 
