@@ -2,9 +2,18 @@ const container = document.querySelector("#container");
 const button = document.createElement("button");
 const body = document.querySelector("body");
 const eraser = document.createElement("button");
+const blackandwhite = document.createElement("button");
+const colors = document.createElement("button");
 
 body.appendChild(button);
 body.appendChild(eraser);
+body.appendChild(blackandwhite);
+body.appendChild(colors);
+
+button.textContent = "New grid";
+eraser.textContent = "Reset";
+blackandwhite.textContent = "Black and White mode";
+colors.textContent = "Color mode";
 
 
     
@@ -31,12 +40,23 @@ gridCreation();
 function hover(){
 const hovering = document.querySelectorAll("[data-ver]");
 
+// color hover
+colors.addEventListener("click",()=>{
 hovering.forEach((valor) => {
     valor.addEventListener("mouseenter",(e)=>{ //random color RGB FORMAT
             e.target.style.backgroundColor = `#${1 + Math.round(Math.random()*100)}${1 + Math.round(Math.random()*100) }${1 + Math.round(Math.random()*100) }`;            
 })
 });
+});
 
+//Black and white hover
+blackandwhite.addEventListener("click",()=>{
+    hovering.forEach((valor) => {
+        valor.addEventListener("mouseenter",(e)=>{ //Black color
+                e.target.style.backgroundColor = "#000000";            
+    })
+    });
+    });
 //Eraser button function
 
 eraser.addEventListener("click",()=>{
