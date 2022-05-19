@@ -50,8 +50,6 @@ function hover(){
     const hovering = document.querySelectorAll("[data-ver]");
 // color hover
     colors.addEventListener("click",()=>{ //color button
-            colors.style.backgroundColor = "brown";
-            blackandwhite.style.backgroundColor = "white";
             hovering.forEach((valor) => {
             valor.addEventListener("mouseenter",(e)=>{ //random color RGB FORMAT
                     e.target.style.backgroundColor = `#${1 + Math.round(Math.random()*100)}${1 + Math.round(Math.random()*100) }${1 + Math.round(Math.random()*100) }`;
@@ -61,8 +59,6 @@ function hover(){
 
 //Black and white hover
 blackandwhite.addEventListener("click",()=>{
-    colors.style.backgroundColor = "white";
-    blackandwhite.style.backgroundColor = "brown";
     hovering.forEach((valor) => {
         valor.addEventListener("mouseenter",(e)=>{ //Black color or White
                 e.target.style.backgroundColor = "#000000";     
