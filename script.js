@@ -1,35 +1,41 @@
-const container = document.querySelector("#container");
-const button = document.createElement("button");
-const body = document.querySelector("body");
-const eraser = document.createElement("button");
-const blackandwhite = document.createElement("button");
-const colors = document.createElement("button");
-const buttons = document.createElement("div");
-const carcasa = document.querySelector("#carcasa");
+const body = document.querySelector("body");                //Selecting body,
+const container = document.querySelector("#container");     // "container" div
+const caseSketch = document.querySelector("#caseSketch");   // and "caseSketch" div
+
+const button = document.createElement("button");           // Creating 
+const eraser = document.createElement("button");           // four 
+const blackandwhite = document.createElement("button");    // different
+const colors = document.createElement("button");           // buttons
 
 
+const buttons = document.createElement("div");    //This div needs to be the parent of the four buttons   
 
-buttons.appendChild(button);
-buttons.appendChild(eraser);
-buttons.appendChild(blackandwhite);
-buttons.appendChild(colors);
-carcasa.appendChild(buttons);
+                                                  // |
+                                                  // |
+                                                  // v
 
-button.textContent = "New grid";
+buttons.appendChild(button);                      // Putting all
+buttons.appendChild(eraser);                      // these buttons
+buttons.appendChild(blackandwhite);               // inside our
+buttons.appendChild(colors);                      // "buttons" div
+
+caseSketch.appendChild(buttons); // div "buttons" appended to the case of the Etch-a-sketch
+
+button.textContent = "New grid";  //Add text to the buttons
 eraser.textContent = "Reset";
 blackandwhite.textContent = "Black and White mode";
 colors.textContent = "Color mode";
 
 
 
-buttons.classList.add("botones");
+buttons.classList.add("botones");  // adding class for styling purposes, check styles.css file
 
 
     
 // Grid Creation
 
 function gridCreation(c){
-    if (c == undefined) c = 16;
+    if (c == undefined) c = 16;  //if no argument is provided, we're going to have a 16x16 grid by default
     for(let i = 1; i<= c; i++){
     
         const grids = document.createElement("div");
@@ -47,22 +53,29 @@ gridCreation();
 
 // hover effect
 function hover(){
-    const hovering = document.querySelectorAll("[data-ver]");
+    const hovering = document.querySelectorAll("[data-ver]"); //selecting all the squares
 // color hover
-    colors.addEventListener("click",()=>{ //color button
+    colors.addEventListener("click",(e)=>{ //color button
+            
+            cors = true;
+            bandw = false;
             hovering.forEach((valor) => {
             valor.addEventListener("mouseenter",(e)=>{ //random color RGB FORMAT
-                    e.target.style.backgroundColor = `#${1 + Math.round(Math.random()*100)}${1 + Math.round(Math.random()*100) }${1 + Math.round(Math.random()*100) }`;
+                    if (bandw) return;
+                    e.target.style.backgroundColor = `#${1 + Math.round(Math.random()*100)}${1 + Math.round(Math.random()*100) }${1 + Math.round(Math.random()*100) }`;                    
                 });
         });
         });
 
 //Black and white hover
 blackandwhite.addEventListener("click",()=>{
+
+    bandw = true;
+    cors = false;
     hovering.forEach((valor) => {
         valor.addEventListener("mouseenter",(e)=>{ //Black color or White
-                e.target.style.backgroundColor = "#000000";     
-                  
+                if (cors) return;
+                e.target.style.backgroundColor = "#000000";               
     })
     });
     });
@@ -99,6 +112,10 @@ button.addEventListener("click",()=>{
 })
 
 
+
+var bandw = false;
+
+var cors = false;
 
 
 

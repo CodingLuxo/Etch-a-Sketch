@@ -44,14 +44,11 @@ button{
   touch-action: manipulation;
 }
 
-button:focus{
-  background-color: #391DA6;
-}
 button:active{
     transform: translateY(2px);
 }
 
-#carcasa{
+#caseSketch{
  
     background: linear-gradient(to bottom, #33ccff 0%, #ffff66 100%);
     border-radius: 2em;
@@ -64,4 +61,6 @@ p{
   font-family: 'Macondo', cursive;
   font-size: 50px;
   text-align: center;
+  margin: 18px 0px;
+  
 }
